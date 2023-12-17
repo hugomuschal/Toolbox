@@ -1,0 +1,38 @@
+:root {
+  --fontColor: white;
+  --fontFamily: Tahoma, sans-serif;
+  --backgroundColor: #181818;
+  --surfaceColor: #2E2E2E;
+  --primaryColor: #FB72B9;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: var(--fontColor);
+  background-color: var(--backgroundColor);
+  font-family: var(--fontFamily);
+}
+
+
+//        ------------- Scrollbar ---------------
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--accentColor) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primaryColor);
+  border-radius: 2px;
+  border: none;
+}
