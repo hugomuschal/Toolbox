@@ -1,11 +1,10 @@
 .startPage {
-  margin-top: 49px; //margin top - header
   height: calc(100vh - 49px - 49px); //100vh - height of header - height of footer
   min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 80px;
+  gap: 100px;
   font-size: min(15vw, 100px);
   color: transparent;
   -webkit-text-stroke-width: 1px;
@@ -17,18 +16,30 @@
     color: var(--primaryColor);
   }
 
+  .tools__header{
+    font-size: 40px;
+    -webkit-text-stroke-width: 0;
+    color: var(--fontColor__onSurface);
+
+    .tools__headerX{
+      -webkit-text-stroke-width: 1px;
+      color: transparent;
+    }
+  }
 
   .tool {
     margin-bottom: 10px;
-    width: 300px;
-    height: 100px;
+    width: 315px;
     background-color: var(--primaryColor);
     -webkit-text-stroke-color: var(--fontColor__onPrimary);
-    transition: all 0.05s ease-in-out;
+    transition: all 0.1s ease-in-out;
 
-    .tool_header{
+    .tool__header{
       font-size: 40px;
-      padding: 10px;
+      padding: 20px 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -40,8 +51,9 @@
 
 }
 
-@media (max-width: 820px) {
+@media (max-width: 900px) {
   .startPage {
     min-height: 800px;
+    flex-direction: column;
   }
 }

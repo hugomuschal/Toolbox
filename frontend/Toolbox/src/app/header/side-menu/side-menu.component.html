@@ -1,5 +1,31 @@
-<div class="sideMenu" [@slideInOut]="" *ngIf="header.sideMenuIsOpened">
+<div class="sideMenu" [@slideInOut]="" *ngIf="header.sideMenuIsOpened" (click)="$event.stopPropagation()">
   <div class="sideMenu__Headline">
     TOOLS
+  </div>
+  <div class="sideMenu__tools">
+    <div class="sideMenu__tool">
+      TOOL 1
+    </div>
+    <div class="sideMenu__tool">
+      TOOL 2
+    </div>
+    <div class="sideMenu__tool">
+      TOOL 3
+    </div>
+    <div class="sideMenu__tool">
+      TOOL 4
+    </div>
+    <div class="sideMenu__tool">
+      TOOL 5
+    </div>
+    <div class="sideMenu__tool">
+      TOOL 6
+    </div>
+    <div class="sideMenu__tool">
+      TOOL 7
+    </div>
+    <div class="sideMenu__tool">
+      TOOL 8
+    </div>
   </div>
 </div>

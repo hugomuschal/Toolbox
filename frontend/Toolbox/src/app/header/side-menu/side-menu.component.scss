@@ -5,14 +5,43 @@
   bottom: 0;
   width: 300px;
   background-color: var(--primaryColor);
+  box-shadow: -2px 0px 5px 0px var(--surfaceColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .sideMenu__Headline{
-    display: flex;
-    justify-content: center;
     padding: 20px;
     font-size: 80px;
     color: transparent;
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--fontColor__onPrimary);
+  }
+
+  .sideMenu__tools{
+    width: 100%;
+    border-top: 1px solid var(--surfaceColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: fit-content;
+    overflow-y: auto;
+
+    .sideMenu__tool{
+      padding: 20px 10px;
+      font-size: 30px;
+      font-weight: bold;
+      color: var(--fontColor__onPrimary);
+      width: 85%;
+      border-bottom: 1px solid var(--fontColor__onPrimary);
+      box-sizing: border-box;
+      transition: all 0.1s ease-in-out;
+    }
+
+    .sideMenu__tool:hover{
+      background-color: var(--surfaceColor);
+      color: var(--fontColor__onSurface);
+      cursor: pointer;
+    }
   }
 }

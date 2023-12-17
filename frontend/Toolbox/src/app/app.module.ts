@@ -9,6 +9,8 @@ import {StartPageComponent} from "./contents/start-page/start-page.component";
 import {MatIconModule} from "@angular/material/icon";
 import { SideMenuComponent } from './header/side-menu/side-menu.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ImpressumComponent } from './contents/impressum/impressum.component';
+import { DatenschutzComponent } from './contents/datenschutz/datenschutz.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HeaderComponent,
     FooterComponent,
     StartPageComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    ImpressumComponent,
+    DatenschutzComponent
   ],
   imports: [
     BrowserModule,
