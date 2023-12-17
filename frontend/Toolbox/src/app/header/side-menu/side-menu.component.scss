@@ -1,0 +1,18 @@
+.sideMenu{
+  position: fixed;
+  top: 49px;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: var(--primaryColor);
+
+  .sideMenu__Headline{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-size: 80px;
+    color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: var(--fontColor__onPrimary);
+  }
+}

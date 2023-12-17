@@ -1,7 +1,10 @@
 .header{
-  background-color: var(--primaryColor);
+  background-color: var(--backgroundColor);
   padding: 15px;
   width: 100%;
   display: flex;
   position: fixed;
+  justify-content: space-between;
+  top: 0;
+  box-sizing: border-box;
 }

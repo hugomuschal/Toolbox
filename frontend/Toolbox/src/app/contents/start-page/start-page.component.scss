@@ -1,8 +1,47 @@
-.startPage{
-  padding: 15px;
-  height: 100vh;
+.startPage {
+  margin-top: 49px; //margin top - header
+  height: calc(100vh - 49px - 49px); //100vh - height of header - height of footer
+  min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 100px;
+  gap: 80px;
+  font-size: min(15vw, 100px);
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--fontColor__onSurface);
+  flex-wrap: wrap;
+
+
+  .toolBoxText {
+    color: var(--primaryColor);
+  }
+
+
+  .tool {
+    margin-bottom: 10px;
+    width: 300px;
+    height: 100px;
+    background-color: var(--primaryColor);
+    -webkit-text-stroke-color: var(--fontColor__onPrimary);
+    transition: all 0.05s ease-in-out;
+
+    .tool_header{
+      font-size: 40px;
+      padding: 10px;
+    }
+  }
+
+  .tool:hover{
+    cursor: pointer;
+    background-color: var(--surfaceColor);
+    -webkit-text-stroke-color: var(--fontColor__onSurface);
+  }
+
+}
+
+@media (max-width: 820px) {
+  .startPage {
+    min-height: 800px;
+  }
 }

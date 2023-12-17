@@ -1,17 +1,27 @@
 :root {
-  --fontColor: white;
+  --fontColor__onSurface: white;
+  --fontColor__onPrimary: black;
   --fontFamily: Tahoma, sans-serif;
   --backgroundColor: #181818;
   --surfaceColor: #2E2E2E;
-  --primaryColor: #FB72B9;
+  --primaryColor: #EFF248;
+}
+
+html{
+  position: relative;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  color: var(--fontColor);
+  color: var(--fontColor__onSurface);
   background-color: var(--backgroundColor);
   font-family: var(--fontFamily);
+}
+
+.clickableMatIcon:hover{
+  cursor: pointer;
+  color: var(--primaryColor);
 }
 
 
