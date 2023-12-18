@@ -10,19 +10,11 @@ import reactor.core.publisher.Flux;
 
 import java.time.Duration;
 
-/** receives and answers requests from the frontend regarding a member */
-@CrossOrigin(origins = {"http://localhost:4200", "http://randomtools.de"})
+@CrossOrigin(origins = {"http://localhost:4200", "https://randomtools.de"})
 @RestController
 @RequestMapping(value = "/backend/member")
 public final class MemberController {
 
-    /**
-     * checks every second for changes in the room, and if there are, send room data to clients
-     * @param roomId unique identifier of a room
-     * @param memberId unique identifier of a member
-     * @param version current version number of this room
-     * @return a Flux containing the ServerSideEvent with the room data
-     */
     @GetMapping("/{roomId}/{memberId}/updateRoom/{version}")
     public Flux<ServerSentEvent<Room>> updateRoom(@PathVariable("roomId") long roomId, @PathVariable("memberId") int memberId, @PathVariable("version") int version) {
 
@@ -36,43 +28,15 @@ public final class MemberController {
         if (room != null) {
             Member member = room.getMemberById(memberId);
             if (member != null) {
-                member.resetTimer(room);
                 return Flux.range(0, updateLoopCount).delayElements(Duration.ofMillis(updateCheckDelay))
                         .map(sequence -> ServerSentEvent.<Room>builder()
                                 .data((room.getVersion() > version || sequence >= headsUpdLoopCount) ? new Room() : null)
-                                .build())
-                        .doAfterTerminate(member::startTimer);
+                                .build());
             }
         }
         return Flux.just(ServerSentEvent.builder(new Room()).build());
     }
 
-    /**
-     * change username
-     * @param roomId unique identifier of a room
-     * @param memberId unique identifier of a member
-     * @param newName the new name for the specified member
-     * @return an HttpStatus
-     */
-    @PutMapping("/{roomId}/{memberId}/changeName")
-    public ResponseEntity<HttpStatus> changeName(@PathVariable("roomId") long roomId, @PathVariable("memberId") int memberId, @RequestBody String newName) {
-        Room room = Room.getRoomByID(roomId);
-        if (room == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        if (newName.length() > 20 || newName.contains("#")) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        room.changeMemberName(memberId, newName);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    /**
-     * remove a member from the room
-     * @param roomId unique identifier of a room
-     * @param memberId unique identifier of a member
-     * @return an HttpStatus
-     */
     @DeleteMapping("/{roomId}/{memberId}/remove")
     public ResponseEntity<HttpStatus> removeMember(@PathVariable("roomId") long roomId, @PathVariable("memberId") int memberId) {
         Room room = Room.getRoomByID(roomId);
