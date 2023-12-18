@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 100;
 
   .sideMenu__Headline{
     padding: 20px;
@@ -42,6 +43,7 @@
       background-color: var(--surfaceColor);
       color: var(--fontColor__onSurface);
       cursor: pointer;
+      width: 100%;
     }
   }
 }

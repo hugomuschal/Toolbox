@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 12vw;
   font-size: min(15vw, 100px);
   color: transparent;
   -webkit-text-stroke-width: 1px;
@@ -30,22 +30,35 @@
     margin-bottom: 10px;
     width: 315px;
     background-color: var(--primaryColor);
-    -webkit-text-stroke-color: var(--fontColor__onPrimary);
+    -webkit-text-stroke-color: transparent;
+    color: black;
     transition: all 0.1s ease-in-out;
 
     .tool__header{
-      font-size: 40px;
+      font-size: 30px;
       padding: 20px 10px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      .tool__headerNr{
+        -webkit-text-stroke-color: var(--fontColor__onPrimary);
+        color: transparent;
+      }
     }
   }
 
   .tool:hover{
     cursor: pointer;
     background-color: var(--surfaceColor);
-    -webkit-text-stroke-color: var(--fontColor__onSurface);
+    color: var(--fontColor__onSurface);
+    transform: scale(1.05);
+
+    .tool__header{
+      .tool__headerNr{
+        -webkit-text-stroke-color: var(--fontColor__onSurface);
+      }
+    }
   }
 
 }
@@ -54,5 +67,7 @@
   .startPage {
     min-height: 800px;
     flex-direction: column;
+    justify-content: space-around;
+    gap: 0;
   }
 }
