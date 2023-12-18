@@ -1,3 +1,5 @@
 <div class="header">
-  HEADER
+  <div class="toolBoxIcon" (click)="router.navigate([''])">TB</div>
+  <mat-icon class="clickableMatIcon" (click)="sideMenuIsOpened = !sideMenuIsOpened; $event.stopPropagation()">menu</mat-icon>
 </div>
+<app-side-menu></app-side-menu>
