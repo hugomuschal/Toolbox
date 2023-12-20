@@ -8,7 +8,6 @@ import {AfterViewInit, Component} from '@angular/core';
 export class WheelComponent implements AfterViewInit {
 
   polygonValues: number[] = [0, 0, 0, 101, 85, 75, 66, 60, 54, 50, 46, 43, 40, 38, 36, 34, 32, 31, 29, 28];   //polygonValues for 4-20 elements in wheel
-  //wheelElements: string[] = ["Hugo", "Justin", "Christoffer", "Florian", "Jonas"];
   wheelElements: string[] = ["1", "2", "3", "4", "5", "6"]
   result: string = "";
   oddSpin: boolean = true;    //to make rotate angle +/-
