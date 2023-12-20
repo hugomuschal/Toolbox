@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-start-page',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./start-page.component.scss']
 })
 export class StartPageComponent {
+
+  constructor(public router: Router) {
+  }
 
 }

@@ -1,0 +1,167 @@
+.wheel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 50px;
+  overflow: hidden;
+
+  .wheel__header {
+    font-size: 40px;
+    color: var(--primaryColor);
+    font-weight: bold;
+
+    .wheel__X {
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: var(--fontColor__onSurface);
+      color: transparent;
+    }
+  }
+
+  .wheelAndInputs {
+    display: flex;
+    gap: 10vw;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    .wheel__wheelWrapper, .wheel__wheel {
+      position: relative;
+      max-width: 450px;
+      width: 80vw;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+
+      .wheel__wheel {
+        transition: transform 8s cubic-bezier(.14, .64, 0, 1);
+        overflow: hidden;
+        border: 2px solid var(--fontColor__onSurface);
+
+        .wheel__element {
+          position: absolute;
+          width: 50%;
+          height: 50%;
+          transform-origin: bottom right;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: var(--fontColor__onSurface);
+          font-weight: bold;
+
+          .wheel__elementText {
+            color: var(--fontColor__onSurface);
+            transform: rotate(45deg);
+            margin-left: 18%;
+            margin-top: 18%;
+            max-width: 80%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+
+        .wheel__element::before {
+          content: "";
+          position: absolute;
+          height: calc(100% - 1px);
+          width: calc(100% - 1px);
+          background-color: var(--surfaceColor);
+          top: 0;
+          left: 0;
+          clip-path: inherit;
+        }
+      }
+
+      .wheel__spinBtn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        aspect-ratio: 1 / 1;
+        width: fit-content;
+        border-radius: 50%;
+        border: 5px solid var(--backgroundColor);
+        background-color: var(--surfaceColor);
+        color: var(--fontColor__onSurface);
+        transition: all 0.1s ease-in-out;
+        font-weight: bold;
+      }
+
+      .wheel__spinBtn:hover {
+        cursor: pointer;
+        background-color: var(--primaryColor);
+        color: var(--fontColor__onPrimary);
+      }
+    }
+
+    .wheel__wheelWrapper:before {
+      content: "";
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translate(0, -50%);
+      z-index: 5;
+      clip-path: polygon(0 30%, 0 70%, 100% 50%);
+      background-color: var(--primaryColor);
+      mix-blend-mode: difference;
+    }
+
+    .wheel__inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      max-height: 450px;
+      height: 80vw;
+      overflow-y: auto;
+
+      .wheel__inputRow{
+        display: flex;
+        align-items: center;
+        gap: 2px;
+
+        label{
+          font-size: 14px;
+          width: 30px;
+        }
+
+        input{
+          outline: none;
+          border: none;
+          background-color: var(--primaryColor);
+          color: var(--fontColor__onPrimary);
+          font-weight: bold;
+          text-align: center;
+          padding: 5px 2px;
+          font-size: 16px;
+          text-overflow: ellipsis;
+        }
+
+        mat-icon:hover{
+          cursor: pointer;
+        }
+      }
+
+      .wheel__addElement{
+        width: 217px;
+        min-height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--primaryColor);
+        color: var(--fontColor__onPrimary);
+        transition: all 0.1s ease-in-out;
+        box-sizing: border-box;
+        margin-left: 32px;
+      }
+
+      .wheel__addElement:hover{
+        background-color: transparent;
+        border: 1px solid var(--fontColor__onSurface);
+        color: var(--fontColor__onSurface);
+        cursor: pointer;
+      }
+    }
+  }
+}

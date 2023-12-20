@@ -11,6 +11,7 @@ import { SideMenuComponent } from './header/side-menu/side-menu.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ImpressumComponent } from './contents/impressum/impressum.component';
 import { DatenschutzComponent } from './contents/datenschutz/datenschutz.component';
+import { WheelComponent } from './contents/wheel/wheel.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +21,15 @@ import { DatenschutzComponent } from './contents/datenschutz/datenschutz.compone
     StartPageComponent,
     SideMenuComponent,
     ImpressumComponent,
-    DatenschutzComponent
+    DatenschutzComponent,
+    WheelComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatIconModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatIconModule,
+        BrowserAnimationsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
