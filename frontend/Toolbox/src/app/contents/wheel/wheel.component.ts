@@ -8,9 +8,11 @@ import {AfterViewInit, Component} from '@angular/core';
 export class WheelComponent implements AfterViewInit {
 
   polygonValues: number[] = [0, 0, 0, 101, 85, 75, 66, 60, 54, 50, 46, 43, 40, 38, 36, 34, 32, 31, 29, 28];   //polygonValues for 4-20 elements in wheel
-  wheelElements: string[] = ["1", "2", "3", "4", "5", "6"]
+  //wheelElements: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+  wheelElements: string[] = ["Justin", "Christoffer", "Florian", "Hugo", "Jonas", "Sebastian", "Phillip", "Kai-Uwe", "Gian-Luca", "Dennis", "Matthias", "Peter", "Christian", "Jonathan", "Jenny", "Antonia", "Elisabeth", "Erik", "Susanne", "Claudia"]
   result: string = "";
   oddSpin: boolean = true;    //to make rotate angle +/-
+  isSpinning: boolean = false
 
   ngAfterViewInit(): void {
     this.buildWheel();
@@ -44,10 +46,24 @@ export class WheelComponent implements AfterViewInit {
     wheel!.style.transform = "rotate(" + value + "deg)";
   }
 
+  async highlightWheelElement(){
+    while (this.isSpinning){
+      await this.wait(10).then(r => {
+        this.getResult();
+      })
+    }
+  }
+
   getResult() {
     let btn = document.getElementById("wheelBtn");
     let elements = document.elementsFromPoint(btn!.getBoundingClientRect().x - 25, btn!.getBoundingClientRect().y + 26);
-    this.result = elements[0].getElementsByClassName("wheel__elementText").item(0)!.innerHTML;
+
+    //check if wheelElement or wheelElementText got detected
+    if (!elements[0].getElementsByClassName("wheel__elementText").item(0)){
+     this.result = elements[0].innerHTML;
+    }else{
+      this.result = elements[0].getElementsByClassName("wheel__elementText").item(0)!.innerHTML;
+    }
   }
 
   changeWheelElement(event: any, i: number) {

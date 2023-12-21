@@ -1,9 +1,9 @@
 <div class="wheel">
   <div class="wheel__header"><span class="wheel__X">XXX</span> WHEEL <span class="wheel__X">XXX</span></div>
-  <div><strong>ERGEBNIS: {{result}}</strong></div>
+  <div class="wheel__result" [ngStyle]="{'transform': isSpinning ? 'scale(1)' : 'scale(1.5)' }">{{result}}</div>
   <div class="wheelAndInputs">
     <div class="wheel__wheelWrapper">
-      <div class="wheel__wheel" id="wheel" (transitionend)="getResult()">
+      <div class="wheel__wheel" id="wheel" (transitionend)="getResult(); isSpinning = false" (transitionstart)="isSpinning = true; highlightWheelElement()">
         <div class="wheel__element" *ngFor="let element of wheelElements; let last = last">
           <span class="wheel__elementText">{{element}}</span>
           {{last ? buildWheel() : ''}}
