@@ -13,6 +13,7 @@ export class WheelComponent implements AfterViewInit {
   result: string = "";
   oddSpin: boolean = true;    //to make rotate angle +/-
   isSpinning: boolean = false
+  lastWheelElement: string = "";
 
   ngAfterViewInit(): void {
     this.buildWheel();
@@ -20,7 +21,6 @@ export class WheelComponent implements AfterViewInit {
 
   buildWheel() {
     let wheelElements = document.getElementsByClassName("wheel__element") as HTMLCollectionOf<HTMLElement>;
-
 
     for (let i = 0; i < wheelElements.length; i++) {
       let wheelElement = wheelElements.item(i);
@@ -46,9 +46,9 @@ export class WheelComponent implements AfterViewInit {
     wheel!.style.transform = "rotate(" + value + "deg)";
   }
 
-  async highlightWheelElement(){
+  async getCurrentWheelElement(){
     while (this.isSpinning){
-      await this.wait(10).then(r => {
+      await this.wait(10).then(() => {
         this.getResult();
       })
     }
@@ -64,6 +64,18 @@ export class WheelComponent implements AfterViewInit {
     }else{
       this.result = elements[0].getElementsByClassName("wheel__elementText").item(0)!.innerHTML;
     }
+    if (this.isSpinning && this.lastWheelElement != this.result){
+      this.playWheelSound()
+      this.lastWheelElement = this.result;
+    }
+  }
+
+  playWheelSound(){
+    let audio = new Audio();
+    audio.src = "../assets/sounds/wheel_click.mp3";
+    audio.volume = 0.05;
+    audio.load();
+    audio.play().then(() => {});
   }
 
   changeWheelElement(event: any, i: number) {
