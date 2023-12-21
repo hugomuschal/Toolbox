@@ -20,14 +20,14 @@ export class WheelComponent implements AfterViewInit {
     let wheelElements = document.getElementsByClassName("wheel__element") as HTMLCollectionOf<HTMLElement>;
 
 
-      for (let i = 0; i < wheelElements.length; i++) {
-        let wheelElement = wheelElements.item(i);
-        if (wheelElement) {
-          const angle = 360 / wheelElements.length;
-          wheelElement.style.transform = "rotate(calc(" + angle + "deg * " + (i) + "))";
-          wheelElement.style.clipPath = "polygon(0 0, " + this.polygonValues[wheelElements.length - 1] + "% 0, 100% 100%, 0 " + this.polygonValues[wheelElements.length - 1] + "%)";
-        }
+    for (let i = 0; i < wheelElements.length; i++) {
+      let wheelElement = wheelElements.item(i);
+      if (wheelElement) {
+        const angle = 360 / wheelElements.length;
+        wheelElement.style.transform = "rotate(calc(" + angle + "deg * " + (i) + "))";
+        wheelElement.style.clipPath = "polygon(0 0, " + this.polygonValues[wheelElements.length - 1] + "% 0, 100% 100%, 0 " + this.polygonValues[wheelElements.length - 1] + "%)";
       }
+    }
 
   }
 
@@ -72,9 +72,14 @@ export class WheelComponent implements AfterViewInit {
     });
   }
 
+  onTrackBy(index: any) {
+    return index;
+  }
+
   wait(timeout: number) {
     return new Promise(resolve => {
       setTimeout(resolve, timeout);
     });
   }
+
 }

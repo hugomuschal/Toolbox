@@ -12,11 +12,10 @@
       <button class="wheel__spinBtn" id="wheelBtn" (click)="spinWheel()">SPIN</button>
     </div>
     <div class="wheel__inputs" id="wheelInputs">
-      <div class="wheel__inputRow" *ngFor="let element of wheelElements; index as i"
-           (change)="changeWheelElement($event, i)">
-        <label>#{{i + 1}}</label>
-        <input type="text" value="{{element}}">
-        <mat-icon *ngIf="i > 3" (click)="removeWheelElement(i)">delete_outline</mat-icon>
+      <div class="wheel__inputRow" *ngFor="let elementText of wheelElements; trackBy: onTrackBy; let j = index;">
+        <label>#{{j + 1}}</label>
+        <input (change)="changeWheelElement($event, j)" type="text" [value]="elementText">
+        <mat-icon *ngIf="j > 3" (click)="removeWheelElement(j)">delete_outline</mat-icon>
       </div>
       <div *ngIf="wheelElements.length < 20" class="wheel__addElement" (click)="addEmptyWheelElement()">
         <strong>+</strong>
