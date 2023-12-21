@@ -9,11 +9,11 @@ export class WheelComponent implements AfterViewInit {
 
   polygonValues: number[] = [0, 0, 0, 101, 85, 75, 66, 60, 54, 50, 46, 43, 40, 38, 36, 34, 32, 31, 29, 28];   //polygonValues for 4-20 elements in wheel
   //wheelElements: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
-  wheelElements: string[] = ["Justin", "Christoffer", "Florian", "Hugo", "Jonas", "Sebastian", "Phillip", "Kai-Uwe", "Gian-Luca", "Dennis", "Matthias", "Peter", "Christian", "Jonathan", "Jenny", "Antonia", "Elisabeth", "Erik", "Susanne", "Claudia"]
+  wheelElements: string[] = ["Florian", "Hugo", "Christoffer", "Justin", "Kai-Uwe", "Ingo"]
   result: string = "";
-  oddSpin: boolean = true;    //to make rotate angle +/-
+  isOddSpin: boolean = true;    //to make rotate angle +/-
   isSpinning: boolean = false
-  lastWheelElement: string = "";
+  lastWheelElement: Element | undefined;
 
   ngAfterViewInit(): void {
     this.buildWheel();
@@ -30,24 +30,23 @@ export class WheelComponent implements AfterViewInit {
         wheelElement.style.clipPath = "polygon(0 0, " + this.polygonValues[wheelElements.length - 1] + "% 0, 100% 100%, 0 " + this.polygonValues[wheelElements.length - 1] + "%)";
       }
     }
-
   }
 
   spinWheel() {
     let wheel = document.getElementById("wheel");
     let value;
 
-    if (this.oddSpin) {
+    if (this.isOddSpin) {
       value = Math.ceil(Math.random() * 360) + 2000;
     } else {
       value = -(Math.ceil(Math.random() * 360) + 2000);
     }
-    this.oddSpin = !this.oddSpin;
+    this.isOddSpin = !this.isOddSpin;
     wheel!.style.transform = "rotate(" + value + "deg)";
   }
 
-  async getCurrentWheelElement(){
-    while (this.isSpinning){
+  async getCurrentWheelElement() {
+    while (this.isSpinning) {
       await this.wait(10).then(() => {
         this.getResult();
       })
@@ -56,26 +55,28 @@ export class WheelComponent implements AfterViewInit {
 
   getResult() {
     let btn = document.getElementById("wheelBtn");
-    let elements = document.elementsFromPoint(btn!.getBoundingClientRect().x - 25, btn!.getBoundingClientRect().y + 26);
+    let elements = document.elementsFromPoint(btn!.getBoundingClientRect().x - 25, btn!.getBoundingClientRect().y + (btn!.getBoundingClientRect().height) / 2);
+    let currentWheelElement;
 
-    //check if wheelElement or wheelElementText got detected
-    if (!elements[0].getElementsByClassName("wheel__elementText").item(0)){
-     this.result = elements[0].innerHTML;
-    }else{
-      this.result = elements[0].getElementsByClassName("wheel__elementText").item(0)!.innerHTML;
+    for (let i = 0; i < elements.length; i++) {
+      if (elements[i].classList.contains("wheel__element")) {
+        currentWheelElement = elements[i];
+        this.result = elements[i].getElementsByClassName("wheel__elementText").item(0)!.innerHTML;
+      }
     }
-    if (this.isSpinning && this.lastWheelElement != this.result){
+    if (this.isSpinning && this.lastWheelElement != currentWheelElement) {
       this.playWheelSound()
-      this.lastWheelElement = this.result;
+      this.lastWheelElement = currentWheelElement;
     }
   }
 
-  playWheelSound(){
+  playWheelSound() {
     let audio = new Audio();
     audio.src = "../assets/sounds/wheel_click.mp3";
     audio.volume = 0.05;
     audio.load();
-    audio.play().then(() => {});
+    audio.play().then(() => {
+    });
   }
 
   changeWheelElement(event: any, i: number) {
@@ -89,6 +90,23 @@ export class WheelComponent implements AfterViewInit {
 
   removeWheelElement(i: number) {
     this.wheelElements.splice(i, 1);
+  }
+
+  shuffleWheelElements() {
+    for (let i = this.wheelElements.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.wheelElements[i], this.wheelElements[j]] = [this.wheelElements[j], this.wheelElements[i]];
+    }
+  }
+
+  sortWheelElements() {
+    for (let i = 0; i < this.wheelElements.length; i++) {
+      if (!parseInt(this.wheelElements[i], 10)) {
+        this.wheelElements.sort();
+        return;
+      }
+    }
+    this.wheelElements.sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
   }
 
   scrollDown() {

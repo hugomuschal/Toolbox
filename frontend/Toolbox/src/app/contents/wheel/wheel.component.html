@@ -3,7 +3,8 @@
   <div class="wheel__result" [ngStyle]="{'transform': isSpinning ? 'scale(1)' : 'scale(1.5)' }">{{result}}</div>
   <div class="wheelAndInputs">
     <div class="wheel__wheelWrapper">
-      <div class="wheel__wheel" id="wheel" (transitionend)="getResult(); isSpinning = false" (transitionstart)="isSpinning = true; getCurrentWheelElement()">
+      <div class="wheel__wheel" id="wheel" (transitionend)="getResult(); isSpinning = false"
+           (transitionstart)="isSpinning = true; getCurrentWheelElement()">
         <div class="wheel__element" *ngFor="let element of wheelElements; let last = last">
           <span class="wheel__elementText">{{element}}</span>
           {{last ? buildWheel() : ''}}
@@ -11,14 +12,28 @@
       </div>
       <button class="wheel__spinBtn" id="wheelBtn" (click)="spinWheel()">SPIN</button>
     </div>
-    <div class="wheel__inputs" id="wheelInputs">
-      <div class="wheel__inputRow" *ngFor="let elementText of wheelElements; trackBy: onTrackBy; let j = index;">
-        <label>#{{j + 1}}</label>
-        <input (change)="changeWheelElement($event, j)" type="text" [value]="elementText">
-        <mat-icon *ngIf="j > 3" (click)="removeWheelElement(j)">delete_outline</mat-icon>
+    <div>
+      <div class="wheel__buttons">
+        <button (click)="shuffleWheelElements()">
+          <mat-icon>shuffle</mat-icon>
+          Shuffle
+        </button>
+        <button (click)="sortWheelElements()">
+          <mat-icon>sort</mat-icon>
+          Sort
+        </button>
       </div>
-      <div *ngIf="wheelElements.length < 20" class="wheel__addElement" (click)="addEmptyWheelElement()">
-        <strong>+</strong>
+      <div class="wheel__inputs" id="wheelInputs">
+        <div class="wheel__inputRow" *ngFor="let elementText of wheelElements; trackBy: onTrackBy; let j = index;">
+          <label>#{{j + 1}}</label>
+          <input (change)="changeWheelElement($event, j)" type="text" [value]="elementText">
+          <div style="width: 24px">
+            <mat-icon *ngIf="j > 3" (click)="removeWheelElement(j)">delete_outline</mat-icon>
+          </div>
+        </div>
+        <button *ngIf="wheelElements.length < 20" class="wheel__addElement" (click)="addEmptyWheelElement()">
+          +
+        </button>
       </div>
     </div>
   </div>

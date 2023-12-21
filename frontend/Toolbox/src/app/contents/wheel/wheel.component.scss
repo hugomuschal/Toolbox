@@ -20,7 +20,7 @@
   }
 
   .wheel__result{
-    max-width: 100%;
+    max-width: 60%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -95,12 +95,12 @@
         border: 5px solid var(--backgroundColor);
         background-color: var(--surfaceColor);
         color: var(--fontColor__onSurface);
-        transition: all 0.1s ease-in-out;
         font-weight: bold;
+        display: block;
+        padding: 2px;
       }
 
       .wheel__spinBtn:hover {
-        cursor: pointer;
         background-color: var(--primaryColor);
         color: var(--fontColor__onPrimary);
       }
@@ -120,13 +120,25 @@
       mix-blend-mode: difference;
     }
 
+    .wheel__buttons{
+      padding: 10px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+
+      mat-icon{
+        font-size: 18px;
+        height: fit-content;
+      }
+    }
+
     .wheel__inputs {
       display: flex;
       flex-direction: column;
       gap: 5px;
       padding: 10px;
-      max-height: 450px;
-      height: 80vw;
+      max-height: 400px;
+      height: 75vw;
       overflow-y: auto;
 
       .wheel__inputRow{
@@ -157,23 +169,10 @@
       }
 
       .wheel__addElement{
+        padding: 0;
         width: 217px;
         min-height: 28px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--primaryColor);
-        color: var(--fontColor__onPrimary);
-        transition: all 0.1s ease-in-out;
-        box-sizing: border-box;
         margin-left: 32px;
-      }
-
-      .wheel__addElement:hover{
-        background-color: transparent;
-        border: 1px solid var(--fontColor__onSurface);
-        color: var(--fontColor__onSurface);
-        cursor: pointer;
       }
     }
   }
