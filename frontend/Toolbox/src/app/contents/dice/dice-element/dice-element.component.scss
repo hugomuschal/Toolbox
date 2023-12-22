@@ -1,0 +1,129 @@
+.diceElementWrapper {
+  perspective: 1000px;
+
+  .dice__dice {
+    $width: 90px;
+    aspect-ratio: 1;
+    width: $width;
+    transform-style: preserve-3d;
+    transform: rotateY(-10deg) rotateX(-10deg);
+    //animation: rollDice 5s infinite;
+    transition: transform 5s ease-out;
+
+    .dice__site {
+      width: $width;
+      aspect-ratio: 1;
+      background-color: var(--surfaceColor);
+      border: 2px solid var(--fontColor__onSurface);
+      //border-radius: 10px;
+      box-sizing: border-box;
+      position: absolute;
+      padding: calc($width / 10 * 1.5);
+      overflow: hidden;
+
+      .dice__dot {
+        min-width: calc($width / 8);
+        max-width: calc($width / 8);
+        aspect-ratio: 1;
+        background-color: var(--fontColor__onSurface);
+        border-radius: 50%;
+      }
+    }
+
+    #dice__front {
+      transform: translateZ(calc($width / 2));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #dice__back {
+      transform: translateZ(- calc($width / 2));
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+
+    #dice__left {
+      right: calc($width / 2);
+      transform: rotateY(-90deg);
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+
+      div:nth-child(2) {
+        justify-content: center;
+      }
+    }
+
+    #dice__right {
+      left: calc($width / 2);
+      transform: rotateY(90deg);
+      display: flex;
+      justify-content: space-between;
+
+      div:nth-child(2) {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+
+    #dice__top {
+      bottom: calc($width / 2);
+      transform: rotateX(90deg);
+      display: flex;
+      justify-content: space-between;
+
+      div:nth-child(2) {
+        display: flex;
+        align-items: center;
+      }
+
+      div:nth-child(3) {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+
+    #dice__bottom {
+      top: calc($width / 2);
+      transform: rotateX(-90deg);
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+@keyframes rollDice {
+  0% {
+    transform: rotateX(45deg) rotateY(-45deg)
+  }
+  25% {
+    transform: rotateX(-45deg) rotateY(-45deg)
+  }
+  50% {
+    transform: rotateX(45deg) rotateY(45deg)
+  }
+  75% {
+    transform: rotateX(-45deg) rotateY(45deg)
+  }
+  100% {
+    transform: rotateX(45deg) rotateY(-45deg)
+  }
+}

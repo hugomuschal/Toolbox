@@ -1,0 +1,80 @@
+.dice {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 50px;
+
+  .dice__header {
+    font-size: min(40px, 10vw);
+    color: var(--primaryColor);
+    font-weight: bold;
+
+    .dice__X {
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: var(--fontColor__onSurface);
+      color: transparent;
+    }
+  }
+
+  .dice__diceElements{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .dice__diceWrapper {
+      //border: 1px solid white;
+      width: 150px;
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .dice__buttons{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    button{
+
+       mat-icon{
+         font-size: 18px;
+         height: fit-content;
+         width: fit-content;
+       }
+    }
+
+    .dice__addDice{
+      display: flex;
+      gap: 15px;
+      align-items: center;
+
+      .dice__dicePreview{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .dice__diceSvg{
+          content: url("/assets/images/dice.svg");
+          height: 40px;
+        }
+      }
+
+      button{
+        padding: 2px;
+      }
+
+      img{
+        width: 40px;
+      }
+    }
+  }
+}
+
+
