@@ -59,7 +59,7 @@ export class WheelComponent implements AfterViewInit {
     let currentWheelElement;
 
     for (let i = 0; i < elements.length; i++) {
-      if (elements[i].classList.contains("wheel__element")) {
+      if (elements[i].classList.contains("wheel__element") || elements[i].classList.contains("wheel__element3") ||  elements[i].classList.contains("wheel__element2") ||  elements[i].classList.contains("wheel__element1")) {
         currentWheelElement = elements[i];
         this.result = elements[i].getElementsByClassName("wheel__elementText").item(0)!.innerHTML;
       }

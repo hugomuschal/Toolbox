@@ -5,10 +5,49 @@
     <div class="wheel__wheelWrapper">
       <div class="wheel__wheel" id="wheel" (transitionend)="getResult(); isSpinning = false"
            (transitionstart)="isSpinning = true; getCurrentWheelElement()">
-        <div class="wheel__element" *ngFor="let element of wheelElements; let last = last">
-          <span class="wheel__elementText">{{element}}</span>
-          {{last ? buildWheel() : ''}}
+
+        <!-- wheel with 4 or more elements -->
+
+        <div *ngIf="wheelElements.length >= 4">
+          <div class="wheel__element" *ngFor="let element of wheelElements; let last = last">
+            <span class="wheel__elementText">{{element}}</span>
+            {{last ? buildWheel() : ''}}
+          </div>
         </div>
+
+        <!-- wheel with 3 elements -->
+
+        <div *ngIf="wheelElements.length == 3">
+          <div class="wheel__element3" style="--i: 1">
+            <span class="wheel__elementText">{{wheelElements[0]}}</span>
+          </div>
+          <div class="wheel__element3" style="--i: 2">
+            <span class="wheel__elementText">{{wheelElements[1]}}</span>
+          </div>
+          <div class="wheel__element3" style="--i: 3">
+            <span class="wheel__elementText">{{wheelElements[2]}}</span>
+          </div>
+        </div>
+
+        <!-- wheel with 2 elements -->
+
+        <div *ngIf="wheelElements.length == 2">
+          <div class="wheel__element2" style="--i: 1">
+            <span class="wheel__elementText">{{wheelElements[0]}}</span>
+          </div>
+          <div class="wheel__element2" style="--i: 2">
+            <span class="wheel__elementText">{{wheelElements[1]}}</span>
+          </div>
+        </div>
+
+        <!-- wheel with 1 element -->
+
+        <div *ngIf="wheelElements.length == 1">
+          <div class="wheel__element1">
+            <span class="wheel__elementText">{{wheelElements[0]}}</span>
+          </div>
+        </div>
+
       </div>
       <button class="wheel__spinBtn" id="wheelBtn" (click)="spinWheel()">SPIN</button>
     </div>
@@ -28,11 +67,11 @@
           <label>#{{j + 1}}</label>
           <input (change)="changeWheelElement($event, j)" type="text" [value]="elementText">
           <div style="width: 24px">
-            <mat-icon *ngIf="j > 3" (click)="removeWheelElement(j)">delete_outline</mat-icon>
+            <mat-icon *ngIf="j > 0" (click)="removeWheelElement(j)">delete_outline</mat-icon>
           </div>
         </div>
         <button *ngIf="wheelElements.length < 20" class="wheel__addElement" (click)="addEmptyWheelElement()">
-          +
+          <mat-icon>add</mat-icon>
         </button>
       </div>
     </div>

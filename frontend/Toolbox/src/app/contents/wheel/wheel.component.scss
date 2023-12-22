@@ -49,7 +49,7 @@
         overflow: hidden;
         border: 2px solid var(--fontColor__onSurface);
 
-        .wheel__element {
+        .wheel__element, .wheel__element3, .wheel__element2, .wheel__element1 {
           position: absolute;
           width: 50%;
           height: 50%;
@@ -59,20 +59,20 @@
           align-items: center;
           background-color: var(--fontColor__onSurface);
           font-weight: bold;
-
-          .wheel__elementText {
-            color: var(--fontColor__onSurface);
-            transform: rotate(45deg);
-            margin-left: 18%;
-            margin-top: 18%;
-            max-width: 80%;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-          }
         }
 
-        .wheel__element::before {
+        .wheel__elementText {
+          color: var(--fontColor__onSurface);
+          transform: rotate(45deg);
+          margin-left: 18%;
+          margin-top: 18%;
+          max-width: 80%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .wheel__element::before, .wheel__element3::before, .wheel__element2::before, .wheel__element1 {
           content: "";
           position: absolute;
           height: calc(100% - 1px);
@@ -81,6 +81,54 @@
           top: 0;
           left: 0;
           clip-path: inherit;
+        }
+
+        .wheel__element3{
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          transform-origin: 50% 50% 0;
+          transform: rotate(calc(120deg * var(--i)));
+          clip-path: polygon(0 0, 64% 0, 50% 50%, 0 64%);
+
+          .wheel__elementText {
+            margin-left: -36%;
+            margin-top: -36%;
+            max-width: 40%;
+          }
+        }
+
+        .wheel__element2{
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          transform-origin: 50% 50% 0;
+          transform: rotate(calc(180deg * var(--i)));
+          clip-path: polygon(0 0, 100% 0, 50% 50%, 0 100%);
+
+          .wheel__elementText {
+            margin-left: -36%;
+            margin-top: -36%;
+            max-width: 40%;
+          }
+        }
+
+        .wheel__element1{
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          transform-origin: 50% 50% 0;
+          transform: rotate(0deg);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+          .wheel__elementText {
+            margin-left: -36%;
+            margin-top: -36%;
+            max-width: 40%;
+          }
         }
       }
 
@@ -117,7 +165,6 @@
       z-index: 5;
       clip-path: polygon(0 30%, 0 70%, 100% 50%);
       background-color: var(--primaryColor);
-      mix-blend-mode: difference;
     }
 
     .wheel__buttons{
@@ -173,6 +220,11 @@
         width: 217px;
         min-height: 28px;
         margin-left: 32px;
+
+        mat-icon{
+          font-size: 18px;
+          height: fit-content;
+        }
       }
     }
   }
