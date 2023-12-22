@@ -12,6 +12,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ImpressumComponent } from './contents/impressum/impressum.component';
 import { DatenschutzComponent } from './contents/datenschutz/datenschutz.component';
 import { WheelComponent } from './contents/wheel/wheel.component';
+import { DiceComponent } from './contents/dice/dice.component';
+import { DiceElementComponent } from './contents/dice/dice-element/dice-element.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { WheelComponent } from './contents/wheel/wheel.component';
     SideMenuComponent,
     ImpressumComponent,
     DatenschutzComponent,
-    WheelComponent
+    WheelComponent,
+    DiceComponent,
+    DiceElementComponent
   ],
     imports: [
         BrowserModule,

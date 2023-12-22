@@ -1,0 +1,26 @@
+<div class="dice">
+  <div class="dice__header"><span class="dice__X">XXX</span> DICE <span class="dice__X">XXX</span></div>
+  <div class="dice__diceElements">
+    <div class="dice__diceWrapper" *ngFor="let dice of dice">
+      <app-dice-element></app-dice-element>
+    </div>
+  </div>
+  <div class="dice__buttons">
+    <button (click)="rollDice()">
+      <mat-icon>autorenew</mat-icon>
+      ROLL DICE
+    </button>
+    <div class="dice__addDice">
+      <button (click)="removeDice()">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <div class="dice__dicePreview">
+        <div><strong>{{diceAmount}}x</strong></div>
+        <div class="dice__diceSvg"></div>
+      </div>
+      <button (click)="addDice()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
