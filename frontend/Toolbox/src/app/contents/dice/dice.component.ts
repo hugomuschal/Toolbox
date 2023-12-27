@@ -11,8 +11,8 @@ export class DiceComponent {
   dice: number[] = new Array(this.diceAmount).fill(0);
   diceResults: { value: number, amount: number }[] = [];
   diceRotations: { x: number, y: number }[] = new Array(this.diceAmount).fill({x: 0, y: 0});
-  maxRotations: number = 10;
-  minRotations: number = 5;
+  maxRotations: number = 2;
+  minRotations: number = 1;
   isOddRoll: boolean = false;
   isRolling: boolean = false;
 
@@ -24,17 +24,42 @@ export class DiceComponent {
 
     for (let i = 0; i < diceElements.length; i++) {
       let diceElement: HTMLElement | null = diceElements.item(i);
+      let result = Math.floor(Math.random() * (6 - 1 + 1) + 1)
       if (diceElement) {
         if (this.isOddRoll) {
-          xRotation = Math.floor(Math.random() * (this.maxRotations - this.minRotations + 1) + this.minRotations) * 90;
-          yRotation = Math.floor(Math.random() * (this.maxRotations - this.minRotations + 1) + this.minRotations) * 90;
+          xRotation = Math.floor(Math.random() * (this.maxRotations - this.minRotations + 1) + this.minRotations) * 360;
+          yRotation = Math.floor(Math.random() * (this.maxRotations - this.minRotations + 1) + this.minRotations) * 360;
         } else {
-          xRotation = -Math.floor(Math.random() * (this.maxRotations - this.minRotations + 1) + this.minRotations) * 90;
-          yRotation = -Math.floor(Math.random() * (this.maxRotations - this.minRotations + 1) + this.minRotations) * 90;
+          xRotation = -Math.floor(Math.random() * (this.maxRotations - this.minRotations + 1) + this.minRotations) * 360;
+          yRotation = -Math.floor(Math.random() * (this.maxRotations - this.minRotations + 1) + this.minRotations) * 360;
         }
 
-        diceElement.style.transform = "rotateY(" + (yRotation - 10) + "deg) rotateX(" + (xRotation - 10) + "deg)";
-        this.diceRotations[i] = {x: xRotation, y: yRotation};
+        switch (result) {
+          case 1:
+            diceElement.style.transform = "rotateY(" + (360 + yRotation - 10) + "deg) rotateX(" + (360 + xRotation - 10) + "deg)";
+            this.diceRotations[i] = {y: 360 + yRotation, x: 360 + xRotation};
+            break;
+          case 2:
+            diceElement.style.transform = "rotateY(" + (270 + yRotation - 10) + "deg) rotateX(" + (360 + xRotation - 10) + "deg)";
+            this.diceRotations[i] = {y: 270 + yRotation, x: 360 + xRotation};
+            break;
+          case 3:
+            diceElement.style.transform = "rotateY(" + (180 + yRotation - 10) + "deg) rotateX(" + (90 + xRotation - 10) + "deg)";
+            this.diceRotations[i] = {y: 180 + yRotation, x: 90 + xRotation};
+            break;
+          case 4:
+            diceElement.style.transform = "rotateY(" + (360 + yRotation - 10) + "deg) rotateX(" + (90 + xRotation - 10) + "deg)";
+            this.diceRotations[i] = {y: 360 + yRotation, x: 90 + xRotation};
+            break;
+          case 5:
+            diceElement.style.transform = "rotateY(" + (90 + yRotation - 10) + "deg) rotateX(" + (360 + xRotation - 10) + "deg)";
+            this.diceRotations[i] = {y: 90 + yRotation, x: 360 + xRotation};
+            break;
+          case 6:
+            diceElement.style.transform = "rotateY(" + (180 + yRotation - 10) + "deg) rotateX(" + (360 + xRotation - 10) + "deg)";
+            this.diceRotations[i] = {y: 180 + yRotation, x: 360 + xRotation};
+            break;
+        }
       }
     }
   }
