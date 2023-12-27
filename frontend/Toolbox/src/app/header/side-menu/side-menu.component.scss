@@ -37,6 +37,9 @@
       border-bottom: 1px solid var(--fontColor__onPrimary);
       box-sizing: border-box;
       transition: all 0.1s ease-in-out;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .sideMenu__tool:hover{
