@@ -18,24 +18,6 @@
     }
   }
 
-  .dice__diceElements{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-    .dice__diceWrapper {
-      //border: 1px solid white;
-      width: 150px;
-      aspect-ratio: 1;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
   .dice__buttons{
     display: flex;
     align-items: center;
@@ -43,11 +25,11 @@
 
     button{
 
-       mat-icon{
-         font-size: 18px;
-         height: fit-content;
-         width: fit-content;
-       }
+      mat-icon{
+        font-size: 18px;
+        height: fit-content;
+        width: fit-content;
+      }
     }
 
     .dice__addDice{
@@ -61,7 +43,7 @@
         gap: 5px;
 
         .dice__diceSvg{
-          content: url("/assets/images/dice.svg");
+          content: url("/assets/images/dice/dice.svg");
           height: 40px;
         }
       }
@@ -73,6 +55,64 @@
       img{
         width: 40px;
       }
+    }
+  }
+
+  .dice__results{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    min-height: 40px;
+    justify-content: center;
+
+    .dice__result{
+      display: flex;
+      align-items: center;
+
+      .dice__faceSvg{
+        height: 40px;
+      }
+
+      #dice1Svg{
+        content: url("/assets/images/dice/dice-1.svg");
+      }
+
+      #dice2Svg{
+        content: url("/assets/images/dice/dice-2.svg");
+      }
+
+      #dice3Svg{
+        content: url("/assets/images/dice/dice-3.svg");
+      }
+
+      #dice4Svg{
+        content: url("/assets/images/dice/dice-4.svg");
+      }
+
+      #dice5Svg{
+        content: url("/assets/images/dice/dice-5.svg");
+      }
+
+      #dice6Svg{
+        content: url("/assets/images/dice/dice-6.svg");
+      }
+    }
+  }
+
+  .dice__diceElements{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .dice__diceWrapper {
+      width: 150px;
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

@@ -8,7 +8,7 @@
     transform-style: preserve-3d;
     transform: rotateY(-10deg) rotateX(-10deg);
     //animation: rollDice 5s infinite;
-    transition: transform 5s ease-out;
+    transition: transform 4s ease-out;
 
     .dice__site {
       width: $width;

@@ -33,11 +33,15 @@ button{
   gap: 5px;
 }
 
-button:hover{
+button:enabled:hover{
   cursor: pointer;
   background-color: var(--primaryColor);
   color: var(--fontColor__onPrimary);
   border: 1px solid transparent;
+}
+
+button:disabled:hover{
+  cursor: not-allowed;
 }
 
 .clickableMatIcon:hover{
