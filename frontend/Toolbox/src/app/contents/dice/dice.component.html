@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="dice__results">
-    <div *ngFor="let result of diceResults">
+    <div *ngFor="let result of sortedDiceResults">
       <div class="dice__result" *ngIf="!isRolling && diceAmount >= 10">
         <strong>{{result.amount}}x</strong>
         <div class="dice__faceSvg" id="dice{{result.value}}Svg"></div>
