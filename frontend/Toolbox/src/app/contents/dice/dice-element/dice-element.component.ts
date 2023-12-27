@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DiceComponent} from "../dice.component";
 
 @Component({
   selector: 'app-dice-element',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class DiceElementComponent {
 
+  constructor(public dice: DiceComponent) {
+  }
 }

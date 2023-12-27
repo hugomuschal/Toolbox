@@ -1,5 +1,5 @@
 <div class="diceElementWrapper">
-  <div class="dice__dice">
+  <div class="dice__dice" (transitionend)="dice.getResult();  dice.isRolling = false">
     <div class="dice__site" id="dice__front">
       <div class="dice__dot"></div>
     </div>

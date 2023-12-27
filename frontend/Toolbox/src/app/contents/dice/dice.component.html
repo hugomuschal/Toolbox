@@ -1,12 +1,7 @@
 <div class="dice">
   <div class="dice__header"><span class="dice__X">XXX</span> DICE <span class="dice__X">XXX</span></div>
-  <div class="dice__diceElements">
-    <div class="dice__diceWrapper" *ngFor="let dice of dice">
-      <app-dice-element></app-dice-element>
-    </div>
-  </div>
   <div class="dice__buttons">
-    <button (click)="rollDice()">
+    <button (click)="isRolling = true; rollDice()">
       <mat-icon>autorenew</mat-icon>
       ROLL DICE
     </button>
@@ -21,6 +16,19 @@
       <button (click)="addDice()">
         <mat-icon>add</mat-icon>
       </button>
+    </div>
+  </div>
+  <div class="dice__results">
+    <div *ngFor="let result of diceResults">
+      <div class="dice__result" *ngIf="!isRolling && diceAmount >= 10">
+        <strong>{{result.amount}}x</strong>
+        <div class="dice__faceSvg" id="dice{{result.value}}Svg"></div>
+      </div>
+    </div>
+  </div>
+  <div class="dice__diceElements">
+    <div class="dice__diceWrapper" *ngFor="let dice of dice">
+      <app-dice-element></app-dice-element>
     </div>
   </div>
 </div>
