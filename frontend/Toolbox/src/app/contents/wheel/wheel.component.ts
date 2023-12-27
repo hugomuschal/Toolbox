@@ -7,8 +7,13 @@ import {AfterViewInit, Component} from '@angular/core';
 })
 export class WheelComponent implements AfterViewInit {
 
-  polygonValues: number[] = [0, 0, 0, 101, 85, 75, 66, 60, 54, 50, 46, 43, 40, 38, 36, 34, 32, 31, 29, 28];   //polygonValues for 4-20 elements in wheel
-  //wheelElements: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+  //polygonValues for 4-50 elements in wheel
+  polygonValues: number[] = [
+    0, 0, 0, 101, 85, 75, 66, 60, 54, 50, 46, 43, 40, 38, 36, 34, 32, 31, 29, 28, 27, 26, 25, 24, 23, 22.5,
+    22, 20.8, 20, 19.5, 19, 18.5, 18, 17.5, 17, 16.5, 16, 15.6, 15.2, 14.8, 14.5, 14.2, 13.9, 13.6, 13.3,
+    13, 12.8, 12.6, 12.4, 12.2
+  ];
+  //wheelElements: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50"]
   wheelElements: string[] = ["Florian", "Hugo", "Christoffer", "Justin", "Kai-Uwe", "Ingo"]
   result: string = "";
   isOddSpin: boolean = true;    //to make rotate angle +/-
@@ -29,6 +34,13 @@ export class WheelComponent implements AfterViewInit {
         wheelElement.style.transform = "rotate(calc(" + angle + "deg * " + (i) + "))";
         wheelElement.style.clipPath = "polygon(0 0, " + this.polygonValues[wheelElements.length - 1] + "% 0, 100% 100%, 0 " + this.polygonValues[wheelElements.length - 1] + "%)";
       }
+    }
+    if (wheelElements.length > 18 && wheelElements.length <= 36){
+      document.getElementById("wheel")!.style.fontSize = "12px";
+    }else if (wheelElements.length > 36){
+      document.getElementById("wheel")!.style.fontSize = "10px";
+    }else{
+      document.getElementById("wheel")!.style.fontSize = "16px";
     }
   }
 
