@@ -80,8 +80,11 @@ export class DiceComponent {
         if (this.sortedDiceResults[i].value == result) {
           this.sortedDiceResults[i].amount++;
           return;
-        }else if (this.sortedDiceResults[i].value == result * - 1){
+        } else if (this.sortedDiceResults[i].value == result * -1) {
           this.sortedDiceResults[i].amount--;
+          if (this.sortedDiceResults[i].amount == 0) {
+            this.sortedDiceResults.splice(i, 1);
+          }
           return;
         } else if (i == this.sortedDiceResults.length - 1) {
           this.sortedDiceResults.push({amount: 1, value: result});
