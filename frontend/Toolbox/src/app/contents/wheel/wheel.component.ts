@@ -76,19 +76,6 @@ export class WheelComponent implements AfterViewInit {
         this.result = elements[i].getElementsByClassName("wheel__elementText").item(0)!.innerHTML;
       }
     }
-    if (this.isSpinning && this.lastWheelElement != currentWheelElement) {
-      this.playWheelSound()
-      this.lastWheelElement = currentWheelElement;
-    }
-  }
-
-  playWheelSound() {
-    let audio = new Audio();
-    audio.src = "../assets/sounds/wheel_click.mp3";
-    audio.volume = 0.05;
-    audio.load();
-    audio.play().then(() => {
-    });
   }
 
   changeWheelElement(event: any, i: number) {

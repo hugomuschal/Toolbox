@@ -3,10 +3,10 @@
     TOOLS
   </div>
   <div class="sideMenu__tools">
-    <div class="sideMenu__tool"  (click)="header.router.navigate(['wheel'])">
+    <div class="sideMenu__tool" (click)="header.router.navigate(['wheel']); header.sideMenuIsOpened = false">
       WHEEL
     </div>
-    <div class="sideMenu__tool" (click)="header.router.navigate(['dice'])">
+    <div class="sideMenu__tool" (click)="header.router.navigate(['dice']); header.sideMenuIsOpened = false">
       DICE
     </div>
     <div class="sideMenu__tool">

@@ -15,59 +15,65 @@
     color: var(--primaryColor);
   }
 
-  .tools__header{
-    font-size: 40px;
-    -webkit-text-stroke-width: 0;
-    color: var(--fontColor__onSurface);
+  .tool__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .tools__headerX{
-      -webkit-text-stroke-width: 1px;
-      color: transparent;
-    }
-  }
+    .tools__header {
+      font-size: min(7vw, 40px);
+      -webkit-text-stroke-width: 0;
+      color: var(--fontColor__onSurface);
 
-  .tool {
-    margin-bottom: 10px;
-    width: 315px;
-    background-color: var(--primaryColor);
-    -webkit-text-stroke-color: transparent;
-    color: black;
-    transition: all 0.1s ease-in-out;
-
-    .tool__header{
-      font-size: 30px;
-      padding: 20px 10px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
-      .tool__headerNr{
-        -webkit-text-stroke-color: var(--fontColor__onPrimary);
+      .tools__headerX {
+        -webkit-text-stroke-width: 1px;
         color: transparent;
       }
     }
-  }
 
-  .tool:hover{
-    cursor: pointer;
-    background-color: var(--surfaceColor);
-    color: var(--fontColor__onSurface);
-    transform: scale(1.05);
+    .tool {
+      margin-bottom: 10px;
+      max-width: 315px;
+      width: 70vw;
+      background-color: var(--primaryColor);
+      -webkit-text-stroke-color: transparent;
+      color: black;
+      transition: all 0.1s ease-in-out;
 
-    .tool__header{
-      .tool__headerNr{
-        -webkit-text-stroke-color: var(--fontColor__onSurface);
+      .tool__header {
+        font-size: min(6vw, 30px);
+        padding: 20px 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .tool__headerNr {
+          -webkit-text-stroke-color: var(--fontColor__onPrimary);
+          color: transparent;
+        }
+      }
+    }
+
+    .tool:hover {
+      cursor: pointer;
+      background-color: var(--surfaceColor);
+      color: var(--fontColor__onSurface);
+      transform: scale(1.05);
+
+      .tool__header {
+        .tool__headerNr {
+          -webkit-text-stroke-color: var(--fontColor__onSurface);
+        }
       }
     }
   }
-
 }
 
 @media (max-width: 900px) {
   .startPage {
     min-height: 800px;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     gap: 0;
   }
 }

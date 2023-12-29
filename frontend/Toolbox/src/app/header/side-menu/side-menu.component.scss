@@ -3,7 +3,8 @@
   top: 49px;
   right: 0;
   bottom: 0;
-  width: 300px;
+  max-width: 300px;
+  width: 65vw;
   background-color: var(--primaryColor);
   box-shadow: -2px 0px 5px 0px var(--surfaceColor);
   display: flex;
@@ -13,7 +14,7 @@
 
   .sideMenu__Headline{
     padding: 20px;
-    font-size: 80px;
+    font-size: min(15vw, 80px);
     color: transparent;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--fontColor__onPrimary);
@@ -34,6 +35,7 @@
       font-weight: bold;
       color: var(--fontColor__onPrimary);
       width: 85%;
+      min-height: 70px;
       border-bottom: 1px solid var(--fontColor__onPrimary);
       box-sizing: border-box;
       transition: all 0.1s ease-in-out;
