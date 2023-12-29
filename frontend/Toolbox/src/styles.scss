@@ -31,6 +31,7 @@ button{
   border: 1px solid var(--fontColor__onSurface);
   color: var(--fontColor__onSurface);
   gap: 5px;
+  touch-action: manipulation;
 }
 
 button:enabled:hover{
@@ -47,6 +48,7 @@ button:disabled:hover{
 .clickableMatIcon:hover{
   cursor: pointer;
   color: var(--primaryColor);
+  touch-action: manipulation;
 }
 
 
