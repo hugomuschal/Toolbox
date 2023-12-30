@@ -1,0 +1,4 @@
+{
+  "roomUrl": "http://localhost:4200/backend/room",
+  "memberUrl": "http://localhost:4200/backend/member"
+}

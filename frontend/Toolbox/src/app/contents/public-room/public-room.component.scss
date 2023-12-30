@@ -1,0 +1,11 @@
+.content {
+  border: 3px solid white;
+  font-size: min(15vw, 60px);
+  padding: 2px 5px 2px 5px;
+  justify-content: center;
+  margin-top: 30px;
+  background: var(--primaryColor);
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
